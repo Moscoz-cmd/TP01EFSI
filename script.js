@@ -83,7 +83,7 @@ const usuario = {
  activo: false
 
 }
-describeUsuario(usuario);
+
 function describeUsuario(usuario) {
     return `${usuario.nombre} tiene ${usuario.edad} años`;
 }
@@ -96,6 +96,141 @@ function activarUsuario(usuario) {
     return usuario;
 }
 console.log(activarUsuario(usuario));
+
+//Ejercicio 10 — Precio total
+const productos = [
+
+{nombre:"Mouse", precio:10},
+
+{nombre:"Teclado", precio:25},
+
+{nombre:"Monitor", precio:200}
+
+]
+
+function precioTotal(productos) {
+    return productos.reduce((total, producto) => total + producto.precio, 0);
+}
+console.log(precioTotal(productos));
+
+//Parte 4 — ES6
+//Ejercicio 11 — map
+
+
+const usuarios = [
+
+{nombre:"Ana", edad:17},
+
+{nombre:"Juan", edad:25},
+
+{nombre:"Pedro", edad:30}
+
+]
+
+function map(usuarios) {
+    return usuarios.map(usuario => usuario.nombre);
+}
+console.log(map(usuarios));
+
+//Ejercicio 12 — filter
+function filter(usuarios) {
+    return usuarios.filter(usuario => usuario.edad >= 18);
+}
+console.log(filter(usuarios));
+
+
+//Ejercicio 13 — reduce
+function reduce(usuarios) {
+    return usuarios.reduce((total, usuario) => total + usuario.edad, 0);
+}
+console.log(reduce(usuarios));
+
+//Parte 5 — Destructuring y Spread
+//Ejercicio 14 — Destructuring
+
+
+const producto = {
+
+nombre:"Notebook",
+
+precio:1000
+
+}
+
+const { nombre, precio } = producto;
+console.log(nombre, precio);
+
+//Ejercicio 15 — Spread operator
+const productoConStock = { ...producto, stock: 5 };
+console.log(productoConStock);
+
+//Parte 6 — Problemas más reales
+//Ejercicio 16 — Buscar producto
+
+
+function buscarProducto(productos, nombre) {
+    return productos.filter(producto => producto.nombre === nombre);
+}
+console.log(buscarProducto([{nombre:"Mouse", precio:10}, {nombre:"Teclado", precio:25}, {nombre:"Monitor", precio:200}], "Mouse"));
+
+//Ejercicio 17 — Productos caros
+function productosCaros(productos) {
+    return productos.filter(producto => producto.precio > 50);
+}
+console.log(productosCaros([{nombre:"Mouse", precio:10}, {nombre:"Teclado", precio:25}, {nombre:"Monitor", precio:200}]));
+
+//Ejercicio 18 — Promedio
+
+function promedio(numeros) {
+    if (numeros.length === 0) return 0;
+    const suma = numeros.reduce((total, num) => total + num, 0);
+    return suma / numeros.length;
+}
+console.log(promedio([10,8,6,9]));
+
+//Desafío final — Simulación de lógica de API
+
+const usuariosApi = [
+
+{id:1, nombre:"Ana", edad:20},
+
+{id:2, nombre:"Juan", edad:15},
+
+{id:3, nombre:"Pedro", edad:30}
+
+]
+//1. obtenerUsuarios()
+function obtenerUsuarios(usuariosApi)
+{
+return usuariosApi
+}
+console.log(obtenerUsuarios(usuariosApi))
+
+//2.obtenerUsuariosPorId
+function obtenerUsuariosPorId(usuarios, ids) {
+    if (!Array.isArray(ids)) {
+        ids = [ids];
+    }
+    return usuarios.filter(usuario => ids.includes(usuario.id));
+}
+console.log(obtenerUsuariosPorId(usuariosApi, 2));
+
+//3. obtenerMayores()
+function obtenerMayores(usuarios) {
+    return usuarios.filter(usuario => usuario.edad >= 18);
+}
+console.log(obtenerMayores(usuariosApi));
+
+//4. crearUsuario(nombre, edad)
+function crearUsuario(usuarios, nombre, edad) {
+    const nuevoUsuario = { id: usuarios.length + 1, nombre, edad };
+    usuarios.push(nuevoUsuario);
+    return nuevoUsuario;
+}
+console.log(crearUsuario(usuariosApi, "Lucia", 22));
+console.log(usuariosApi);
+
+
 
 
 
